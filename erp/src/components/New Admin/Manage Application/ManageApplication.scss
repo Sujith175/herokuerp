@@ -1,0 +1,38 @@
+.tablewrapper{
+margin-left:20%;
+margin-right:20%;
+margin-top:10%;
+}
+
+.Table{
+    font-family: Arial, Helvetica, sans-serif;
+border-collapse: collapse;
+width: 100%;
+border: none;
+}
+
+.Thead{
+    border: 1px solid #ddd;
+    padding: 8px;  
+}
+
+.TR{
+    margin: auto;
+justify-content: center;
+}
+
+.TH{
+    padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: blue;
+  color: white;
+  text-align: center;
+}
+
+.Td{
+    border: 1px solid #ddd;
+padding: 8px;
+text-align: center;
+text-transform: uppercase;
+}
