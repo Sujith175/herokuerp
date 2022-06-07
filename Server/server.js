@@ -10,6 +10,12 @@ const JobList = require('./models/JobList');
 //connect Database
 connectDB();
 
+if(process.enc.NODE_ENV ==="test"){
+    app.use(express.static("build"));
+    app.get("*",(req,res)=>{
+        res.sendFile(path.resolve(__dirname, "build","intex.html"));
+    }):
+}
 
 const app = express();
 
