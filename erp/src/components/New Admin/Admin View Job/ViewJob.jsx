@@ -49,34 +49,26 @@ const ViewJob = () => {
       <th>Description</th>
       <th>Location</th>
       <th>Expire Date</th>
+      <th>Status</th>
       <th>Manage</th>
 
     </tr>
   </thead>
   { jobs &&  jobs.map(p =>
   <tbody>
-    { p.status == "active" &&
+   
     <tr>
       <td>{p.jobtitle}</td>
       <td>{p.jobdescription}</td>
       <td>{p.location}</td>
       <td>{p.enddate}</td>
+      <td>{p.status}</td>
       <td><Link className="applylink" to={`/updatejob/${p._id}`}>Edit/Delete</Link></td>
     </tr>
-  }
-  {
-    p.status == "Inactive" &&
-    <tr>
-      <td></td>
-      <td></td>
-      <td>No Jobs Available </td>
-      <td></td>
-      <td></td>
-    </tr>
-  }
   </tbody>
    )}
 </Table>
+<div style ={{marginBottom:"30%"}}></div>
 </div>
 </div>
         

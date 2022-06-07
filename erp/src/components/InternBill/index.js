@@ -12,9 +12,10 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import jsPDF from "jspdf";
-import './internBill.css'
-
+import './internBill.css';
+import { useContext } from 'react';
 import { ButtonWrapper } from './InternbillElements';
+import { Context } from '../../Context/Context';
 
 
 const InternBill = () => {
@@ -25,29 +26,40 @@ const InternBill = () => {
     const[username, setUsername] = useState("");
     const[email, setEmail] = useState("");
     const[price, setPrice] = useState("");
+    const[data,setData] = useState([]);
+    
+
     const[generateddate, setGeneratedDate] = useState("");
         const toggle = () => {
         setIsOpen(!isOpen);
       };
 
       const location = useLocation();
-      const path = location.pathname.split("/")[2];
+      // const path = location.pathname.split("/")[2];
+      const {user, dispatch} = useContext(Context);
+
+     
       useEffect(()=>{
    
-        console.log(path);
+        const userid = user._id;
+
           const fetchBillData = async () =>{
             try{
-                const res = await axios.get("http://localhost:5000/api/auth/getBillbyid/" + path);
-                setBillid(res.data.Internbilllist._id);
-                setProgname(res.data.Internbilllist.programname);
-                setUsername(res.data.Internbilllist.username);
-                setEmail(res.data.Internbilllist.email);
-                setPrice(res.data.Internbilllist.price);
-                setGeneratedDate(res.data.Internbilllist.createdAt);
+                const res = await axios.get("http://localhost:5000/api/auth/getBillbyid/" + userid);
+                // setBillid(res.data.Internbilllist._id);
+                // setProgname(res.data.Internbilllist.programname);
+                // setUsername(res.data.Internbilllist.username);
+                // setEmail(res.data.Internbilllist.email);
+                // setPrice(res.data.Internbilllist.price);
+                // setGeneratedDate(res.data.Internbilllist.createdAt);
+                setData(res.data.Internbilllist);
+               
             }catch(error){
               console.log(error);
             }
           }
+
+
           fetchBillData();
       })
 
@@ -79,19 +91,20 @@ const InternBill = () => {
   <Billhead>payment bill</Billhead>
 </Card>
 
-    
+    { data.map((p)=> (
 <Card style={{height:"500px", borderColor:"#6C63FF"}}>
-
-  <P1>Bill Id : #{billid}</P1>
-  <P>Name : {username}</P>
-  <P>Email ID : {email}</P>
-  <P>Program Name : {progname}</P>
-  <P>Bill Generated at:  {generateddate}</P>
+  <P1>Bill Id : #{p.internshipid}</P1>
+  <P>Name : {p.programname}</P>
+  <P>Email ID : {p.email}</P>
+  <P>Program Name : {p.programname}</P>
+  <P>Bill Generated at:  {p.updatedAt}</P>
   <P >Payment Status:  <span style={{color:"green", textTransform:"uppercase", fontStyle:"bold"}}>SuccessFull</span></P>
-  <P2>Total Amount:  Rs:{price}/-</P2>
-  
-    
+  <P2>Total Amount:  Rs:{p.price}/-</P2>  
 </Card>
+
+    ))
+
+}
 </CardWrapper>
 </div>
 <MarginSetterNav/>

@@ -74,17 +74,10 @@ const SinglePost = () => {
             </SinglePostDesc>
             <SingleJobRequirements><p style={{color:"black"}}>Requirements For This Job: </p>{post.requirements}</SingleJobRequirements>
            <SingleJobCategory><p style={{color:"black"}}>Category: </p>{post.categories}</SingleJobCategory>
-            
-            {application.map((p)=>(
-                  <div>
-                    {p.email==user.email && p.jobtitle == post.jobtitle &&
-                    <ButtonLink to = "/userappliedjoblist">Already Applied Check Status</ButtonLink>
-                    }
-                    {p.email != user.email && p.jobtitle != post.jobtitle &&
-                      <ButtonLink to = {`/registerjob/${path}`}>Apply This Job</ButtonLink>
-                    }
-                  </div>
-            ))}
+                   
+                    <ButtonLink to = {`/registerjob/${path}`}>Apply This Job</ButtonLink>
+
+        
           <SinglePostInfo> 
           </SinglePostInfo>
 

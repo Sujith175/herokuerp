@@ -3,7 +3,7 @@ const express= require('express');
 const connectDB = require('./config/db');
 const errorHandler = require("./middleware/error");
 const cors = require('cors');
-const multer = require("multer");
+
 const bodyParser = require('body-parser');
 const cron = require('node-cron');
 const JobList = require('./models/JobList');

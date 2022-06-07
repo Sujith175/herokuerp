@@ -6,7 +6,7 @@ import { MarginSetterNav } from '../Carrers/CarrerElements';
 import PageHeader from '../PageHeader';
 
 import Footer from '../Footer';
-import { InternTitle } from './internshiplistElements';
+
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -49,8 +49,8 @@ const InternshipList = () => {
     <PageHeader/>
     {/* <Internships internships = {intern}/> */}
     
-    <InternTitle>Our Internship Program for Students</InternTitle>
-    <MarginSetterNav/>
+    
+    
     
     <Interns posts ={posts}/>
 

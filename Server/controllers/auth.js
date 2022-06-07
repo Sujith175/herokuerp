@@ -107,6 +107,9 @@ exports.postJob = async(req, res) => {
         res.status(500).json(error);
     }
 }
+
+
+
 exports.postIntern = async(req, res) => {
     const newIntern = new InternShip(req.body);
     try{
@@ -116,7 +119,15 @@ exports.postIntern = async(req, res) => {
         res.status(500).json(error);
     }
 }
+
+
 exports.postInternBill = async(req, res) => {
+    console.log("postbill called");
+    console.log(req.body);
+    const internshipId = req.body.internshipid;
+    console.log('interid '+internshipId);
+    InternShip.findByIdAndUpdate({_id:internshipId},{$inc: { numberofopenings: -1 } }
+    );
     const newInternBill = new InternShipBills(req.body);
     try{
         const savedBill = await newInternBill.save();
@@ -149,8 +160,8 @@ exports.setNotification = async(req, res) => {
 
 exports.updateJobs = async(req, res, next) => {
     const jobId = req.params.id;
-             
-    const { jobtitle, jobdescription, location, enddate, requirements, salary, categories  } = req.body;
+        console.log(req.body);     
+    const { jobtitle, jobdescription, location, enddate, requirements, salary, categories, status  } = req.body;
     let joblist;
     try{
         joblist = await Joblist.findByIdAndUpdate(jobId,{
@@ -161,7 +172,9 @@ exports.updateJobs = async(req, res, next) => {
             requirements,
             salary,
             categories,
+            status:status
         });
+
     }catch(err){
         console.log(err);
         return next();
@@ -174,6 +187,36 @@ try{
 }
 res.status(200).json({joblist: joblist})
 }
+
+
+exports.updateIntern = async(req, res, next) => {
+    const internid = req.params.id;
+        console.log(req.body);     
+    const { name, description, rate, requiredskills, timeperiod, numberofopenings } = req.body;
+    let internlist;
+    try{
+        internlist = await InternShip.findByIdAndUpdate(internid,{
+            name,
+            description,
+            rate,
+            requiredskills,
+            timeperiod,
+            numberofopenings
+        });
+
+    }catch(err){
+        console.log(err);
+        return next();
+}
+try{
+    internlist = await InternShip.save();
+}catch(err){
+    console.log("saving Failed", err);
+    return next();
+}
+res.status(200).json({internlist: internlist})
+}
+
 
 exports.getJobById = async(req,res,next) => {
     const jobId = req.params.id;
@@ -227,11 +270,13 @@ exports.getInternById = async(req,res,next) => {
     res.status(200).json({Internlist: Internlist,
     });
 };
+
+
 exports.getBillById = async(req,res,next) => {
     const internbillid = req.body.id;
     let Internbilllist
     try{
-        Internbilllist = await InternShipBills.findOne(internbillid);
+        Internbilllist = await InternShipBills.find(internbillid);
         console.log(Internbilllist);
     }catch(err){
         console.log(err);
@@ -423,6 +468,34 @@ exports. deleteJob = async(req, res, next)=> {
     res.status(200).json({joblist: joblist});
     };
 
+
+exports.deleteIntern = async(req, res, next)=> {
+    const internId = req.params.id;
+    const  status  = req.body.status;
+    let internlist;
+    try{
+        internlist = await InternShip.findByIdAndUpdate(internId,{
+            status:status,
+        });
+    }catch(err){
+        console.log(err);
+        return next(err);
+    }
+    if(!internlist){
+        return res.status(400).json({message:"Requested Intern cannot be removed"});
+    
+    }
+    else {
+        try{
+            internlist = await internlist.save();
+        }catch(err){
+            console.log("Delete Failed", err);
+            return next();
+        }
+    }
+    res.status(200).json({internlist: internlist});
+    };
+
 exports. registerJob = async(req, res, next) => {
 try{
     
@@ -527,10 +600,12 @@ try{
     console.log("saving Failed", err);
     return next();
 }
+
+
 const CLIENT_ID = '1031686616057-8eb8b8beps5dr49jkjc5p5sq5u3ag8ij.apps.googleusercontent.com';
 const CLEINT_SECRET = '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';
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-const REFRESH_TOKEN = '1//04TOBS-w59GhfCgYIARAAGAQSNwF-L9IrnsQSq6qmkyqR-m5XZh46cnPFMkY91wLY3yHbOTkamABEEPn32CzjokIeG7KEW0gqPWA';
+const REFRESH_TOKEN = '1//04qKAKhAe-PKYCgYIARAAGAQSNwF-L9Irw5V8fJ-iJlGHA3VylmsgAatNK4agIW1ygNGwsEox6Zp0-jEpqysez9wGrJEguZJUKD8';
 
 if(applicationlist.status === "Accepted"){
 const oAuth2Client = new google.auth.OAuth2(

@@ -2,8 +2,9 @@ import React from 'react'
 import { PostsStyle } from './InternsElements';
 import Internn from '../Internn';
 import { useState } from 'react';
-import { SearchButton, SearchCard, SearchInput } from '../StudentProgram/StudentProgramElements';
-
+import { SearchCard, SearchInput } from '../StudentProgram/StudentProgramElements';
+import { InternTitle } from '../InternshipList/internshiplistElements';
+import { MarginSetterNav } from '../Carrers/CarrerElements';
 
 const Interns = ({posts}) => {
     console.log(posts);
@@ -11,9 +12,11 @@ const Interns = ({posts}) => {
   return (
     <>
     <SearchCard>
-         <SearchInput type="text" onChange = {(e)=>setSearch(e.target.value)} placeholder="Search..."></SearchInput>
-         <SearchButton><i class="fa fa-search"></i></SearchButton>
+         <SearchInput style={{color:"black"}} type="text" onChange = {(e)=>setSearch(e.target.value)} placeholder="Search..."></SearchInput>
+
      </SearchCard>
+     <InternTitle>Our Internship Program for Students</InternTitle>
+     <MarginSetterNav/>
     <PostsStyle>
     {
          posts.filter((value)=>{

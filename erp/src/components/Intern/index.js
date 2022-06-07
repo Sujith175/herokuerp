@@ -35,9 +35,9 @@ const Intern = () => {
     const navigate = useNavigate();
 
 
-
     useEffect(() =>{
       //console.log(path);
+      console.log(billuserid);
         const fetchIntern = async () => {
           try {
             const res = await axios.get("/api/auth/getinternship/"+ search);
@@ -62,10 +62,11 @@ useEffect(() =>{
   const fetchId = async () =>{
     try{
         const res = await axios.get("http://localhost:5000/api/auth/getBillbyuserid/" + path);
+       
             setBilluserid(res.data.Internbillbyid.userid);
             setBillId(res.data.Internbillbyid.internshipid);
          
-          //console.log(billid);
+          // console.log(billid);
     }catch(error){
       console.log(error);
     }
@@ -91,7 +92,6 @@ useEffect(() =>{
             "Content-Type" : "application/json"
         }
     }
-    console.log("BIll ID "+billuserid);
     try{
         const{data} = await axios.post("http://localhost:5000/api/auth/postBill",
         {
@@ -102,17 +102,14 @@ useEffect(() =>{
             userid,
             email
             }, config);
-            
             if(data)
               {
                 
-            alert("Registration is Successfull")
-            navigate(`/viewbill/${billid}`);
+            alert("Registration is Successfull");
+            navigate(`/viewbill/${userid}`);
             }else{
               alert("Sorry, something went wrong, Try Again Later")
             }
-
-
     }catch(error){
             setError(error.response.data.error);
             setTimeout( () => {

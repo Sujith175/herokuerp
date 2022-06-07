@@ -1,0 +1,72 @@
+.floatcontainer{
+    border: 3px solid #fff;
+    padding: 20px;
+    }
+    
+    .floatchild{
+    width: 50%;
+    float: left;
+    padding: 20px;
+    }
+    
+    .updatecard{
+        display: inline-flex;
+    position: relative;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+    background: grey;
+    width: 400px;
+    height: 100%;
+    box-shadow: 5px 5px 10px #ccc;
+    align-content: center;
+    align-items: center;
+    margin-left: 50%;
+    margin-right: 10%;
+    margin-top: 5%;
+    }
+    
+    .heading4{
+        padding-bottom:30px;
+    font-weight:bold;
+    font-size: 30px;
+    text-transform: uppercase;
+    }
+    .jobdesc{
+    padding-bottom:15px;
+    margin-left:2%;
+    margin-right:2%;
+    }
+    .location{
+        padding-bottom : 5px;
+    }
+    .enddate{
+        padding-bottom:10px;
+    }
+    
+    .applybutton{
+        border-radius: 50px;
+    background: #6C63FF;
+    white-space: nowrap;
+    padding: 10px 22px;
+    color:#010606;
+    font-size:16px;
+    outline:none;
+    border:none;
+    cursor:pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration:none;
+    
+    
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        color:#010606;
+    }
+    }
+    
+    .frmcontainer{
+    margin-left:20%;
+    margin-right:20%;
+    margin-top: 10%;
+    }

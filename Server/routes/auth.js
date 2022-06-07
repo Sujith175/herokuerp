@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 const {register, getname, getJobs, getJobById, updateJobs, deleteJob, postJob, getApplications, 
 getApplicationsById, addLocation, getLocation,setNotification, getDetails, updateStatus,
- getapplicationByEmail, postIntern, getIntern, postInternBill, getBillById, getBillByUserId, updateCount, getJobsSearch, getInternShipById} = require("../controllers/auth");
+ getapplicationByEmail, postIntern, getIntern, postInternBill, getBillById, getBillByUserId, updateCount, getJobsSearch, getInternShipById, deleteIntern, updateIntern} = require("../controllers/auth");
 const {login,forgotpassword,resetpassword, registerJob} = require("../controllers/auth");
 
 router.route("/register").post(register);
@@ -14,6 +14,7 @@ router.route("/updatejob/:id").patch(updateJobs);
 router.route("/forgotpassword").post(forgotpassword);
 router.route("/resetpassword/:resetToken").put(resetpassword);
 router.route("/deletejob/:id").patch(deleteJob);
+router.route("/deleteintern/:id").patch(deleteIntern);
 router.route("/postjob").post(postJob);
 router.route("/registerjob").post(registerJob);
 router.route("/getapplication").get(getApplications);
@@ -31,6 +32,8 @@ router.route("/getBillbyuserid/:id").get(getBillByUserId);
 router.route("/getBillbyid/:id").get(getBillById);
 router.route("/getjobsearch").get(getJobsSearch);
 router.route("/admingetinternbyid/:id").get(getInternShipById);
+router.route("/updateintern/:id").patch(updateIntern);
+
 // router.route("/updatecount/:id").patch(updateCount);
 
 

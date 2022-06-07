@@ -2,18 +2,19 @@
     flex: 1;
     border-right: 0.5px solid rgb(230, 227, 227);
     min-height: 100vh;
-    background-color: white;
+    background-color: #6C63FF;
   
     .top {
       height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-  
+      background-color: rgb(43, 14, 92);
       .logo {
         font-size: 20px;
         font-weight: bold;
-        color: #6439ff;
+        color: white;
+        
       }
     }
   
@@ -40,12 +41,13 @@
   
         li {
           display: flex;
+          color:white;
           align-items: center;
           padding: 40px;
           cursor: pointer;
   
           &:hover {
-            background-color: #ece8ff;
+            background-color: #13045f;
           }
   
           .icon {

@@ -16,19 +16,19 @@ const ASidebar = () => {
             
             <li>
             {/* <a><i className="icon" class="fa-solid fa-grid-horizontal"></i></a> */}
-                <span><Link style={{textDecoration:"none"}} to="/adminhome" >Dashboard</Link></span>
+                <span style={{color:"white"}}><Link style={{textDecoration:"none", color:"white"}} to="/adminhome" >Dashboard</Link></span>
             </li>
             <li>
             {/* <a><i className='icon' class="fa-solid fa-briefcase"></i></a> */}
-                <span><Link style={{textDecoration:"none"}} to="/recruitement" >Manage Recruitement</Link></span>
+                <span><Link style={{textDecoration:"none", color:"white"}} to="/recruitement" >Manage Recruitement</Link></span>
                 </li>
             <li>
             <FontAwesomeIcon icon="fa-solid fa-hand-holding-dollar" />
-            <span><Link style={{textDecoration:"none"}} to="" >Manage Payroll</Link></span>
+            <span><Link style={{textDecoration:"none", color:"white"}} to="" >Manage Payroll</Link></span>
                 </li>
             <li>
             <FontAwesomeIcon icon="fa-solid fa-diagram-project" />
-                <span><Link style={{textDecoration:"none"}} to="" >Manage Project</Link></span>
+                <span><Link style={{textDecoration:"none", color:"white"}} to="" >Manage Project</Link></span>
                 </li>
             
         </ul>

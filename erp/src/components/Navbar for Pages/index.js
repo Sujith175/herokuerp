@@ -52,7 +52,7 @@ const {user, dispatch} = useContext(Context);
   <>
   <Nav ScrollNav={ScrollNav}>
     <NavbarContainer>
-      <NavLogo to='/home'>Intada</NavLogo>
+      <NavLogo to='/'>Intada</NavLogo>
       <MobileIcon onClick={toggle}>
         <FaBars/>
       </MobileIcon>
@@ -61,13 +61,13 @@ const {user, dispatch} = useContext(Context);
           <NavLinks to='/'>Home</NavLinks>
         </NavItem>
         <NavItem>
-          <NavLinks to='/about'>About</NavLinks>
+          <NavLinks to='/aboutus'>About</NavLinks>
         </NavItem>
         <NavItem>
           <NavLinks to='/getcarrers'>Careers</NavLinks>
         </NavItem>
         <NavItem>
-          <NavLinks to=''>Services</NavLinks>
+          <NavLinks to='/services'>Services</NavLinks>
         </NavItem>
         <NavBtn>
         {!user && 

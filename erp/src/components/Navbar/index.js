@@ -53,7 +53,7 @@ const {user, dispatch} = useContext(Context);
   <>
   <Nav ScrollNav={ScrollNav}>
     <NavbarContainer>
-      <NavLogo to='/home'>Intada</NavLogo>
+      <NavLogo to='/'>Intada</NavLogo>
       <MobileIcon onClick={toggle}>
         <FaBars/>
       </MobileIcon>
@@ -68,7 +68,7 @@ const {user, dispatch} = useContext(Context);
           <NavLinksRoute to='/getcarrers'>Careers</NavLinksRoute>
         </NavItem>
         <NavItem>
-          <NavLinks to='services'>Services</NavLinks>
+          <NavLinks to='/services'>Services</NavLinks>
         </NavItem>
         {/* {user &&  <NavItem>
           <NavLinks to=''><span>{user.notifications}</span>

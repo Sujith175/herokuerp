@@ -20,6 +20,7 @@ const UpdateJob = () => {
     const[showForm, setShowForm] = useState(false);
     const[jobtitle, setjobtitle] = useState("");
    
+    const[ustatus, setUstatus] = useState("");
     const[status, setStatus] = useState("Inactive");
     const[jobdescription, setJobdescription] = useState("");
     const[location, setLoctaion] = useState("");
@@ -27,7 +28,8 @@ const UpdateJob = () => {
     const[salary, setSalary] = useState("");
     const[requirements, setRequirements] = useState("");
     const[categories, setCategories] = useState("");
-   
+
+   console.log(ustatus);
 
     const navigate = useNavigate();
         useEffect(() => {
@@ -60,7 +62,6 @@ const UpdateJob = () => {
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify({
               status: status,
-              
             })
           }) 
   }
@@ -75,7 +76,7 @@ const UpdateJob = () => {
 
     const sumbitHandler = (e) =>{
         e.preventDefault();
-        
+        console.log(ustatus);
         const updateRequest = async() => {
             await fetch(`http://localhost:5000/api/auth/updatejob/${id}`,{
               method:'PATCH',
@@ -88,7 +89,8 @@ const UpdateJob = () => {
                 enddate:enddate,
                 requirements:requirements,
                 salary:salary,
-                categories:categories
+                categories:categories,
+                status:ustatus
               })
   
             }
@@ -96,7 +98,8 @@ const UpdateJob = () => {
             .then(() => alert(`Updated Successfully Click Ok to Proceed`))
             .catch(err => console.log(err))
         }
-        updateRequest().then(() => navigate('/adminviewjob'));
+        
+        updateRequest().then(() => navigate('/admindisplayjob'));
         setShowForm(e => !e);
       }
 
@@ -117,11 +120,10 @@ const UpdateJob = () => {
         <p className='jobdesc'>{jobs.jobdescription}</p>
         <p className='location'>Location: {jobs.location}</p>
         <p className="enddate">Expires: {jobs.enddate}</p>
-        <p className="enddate">{jobs.requiredskills}</p>
-        <p className="enddate">{jobs.salary}</p>
-        <p className="enddate">{jobs.JobType}</p>
-        <p className="enddate">{jobs.requirements}</p>
-        <p className="enddate">{jobs.categories}</p>
+        <p className="enddate">Salary:{jobs.salary}</p>
+        <p className="enddate">Requirements:{jobs.requirements}</p>
+        <p className="enddate">Category:{jobs.categories}</p>
+        <p className="enddate">Status:{jobs.status}</p>
        <button className= "applybutton" onClick={editHandler}>Edit</button>
        <p></p>
        <button className= "applybutton" onClick={deleteHandler}>Delete</button>
@@ -236,6 +238,18 @@ value={categories}
   </Form.Group>
   </Form.Group>
 
+  <Form.Group className="mb-3" controlId="formBasicLocation">
+<Form.Label>Status</Form.Label>
+<Form.Select aria-label="Default select example"
+onChange={(e)=>setUstatus(e.target.value)}
+value={ustatus}
+>
+  <option value="" disabled>Select Status</option>
+  <option value="active">Active</option>
+  <option value="inactive">Inactive</option>
+</Form.Select> 
+</Form.Group>
+
   <Button variant="primary" type="submit">
     Update
   </Button>
@@ -251,4 +265,4 @@ value={categories}
   )
 }
 
-export default UpdateJob
+export default UpdateJob;

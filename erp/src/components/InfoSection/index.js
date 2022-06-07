@@ -31,7 +31,7 @@ alt, primary, dark, dark2}) => {
                 <Heading lightText={lightText}>{headLine}</Heading>
                 <SubTitle darkText={darkText}>{description}</SubTitle>
                 <BtnWrap>
-                    <Button to='home'
+                    <Button to='/aboutus'
                     smooth={true}
                     duration={500}
                     spy={true}
