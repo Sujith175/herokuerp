@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build":"cd erp && npm install && cd ../Server && npm install && npm run build",
+    "build":"cd Server && npm install && cd ../erp && npm install && npm run build",
     "start": "node Server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
