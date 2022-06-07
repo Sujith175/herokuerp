@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build":"cd Server && npm install && cd ../erp && npm install && npm run build",
+    "heroku-postbuild":"npm install --prefix erp && npm run build --prefix erp",
     "start": "node Server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
