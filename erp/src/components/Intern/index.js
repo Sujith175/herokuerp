@@ -108,7 +108,7 @@ useEffect(() =>{
             alert("Registration is Successfull");
             navigate(`/viewbill/${userid}`);
             }else{
-              alert("Sorry, something went wrong, Try Again Later")
+              alert("Sorry, something went wrong, Try Again Later");
             }
     }catch(error){
             setError(error.response.data.error);
